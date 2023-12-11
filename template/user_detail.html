@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Detail</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <h1>User Detail</h1>
+
+    <h2>Goals</h2>
+    {% for goal in goals %}
+    <div class="goal-info">
+        <p>Goal ID: {{ goal[0] }}</p>
+        <p>Goal Name: {{ goal[1] }}</p>
+        <p>Goal Type: {{ goal[2] }}</p>
+        <p>Goal Target: {{ goal[3] }}</p>
+        <p>Progress: {{ goal[4] }}</p>
+    </div>
+    {% endfor %}
+
+    <h2>Activities</h2>
+    {% for activity in activities %}
+    <div class="activity-info">
+        <p>Activity ID: {{ activity[0] }}</p>
+        <p>Activity Date: {{ activity[1] }}</p>
+        <p>Activity Value: {{ activity[2] }}</p>
+    </div>
+    {% endfor %}
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flash-messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+</body>
+
+</html>
+
+
